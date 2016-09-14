@@ -5,12 +5,13 @@ import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
 import Subheader from 'material-ui/Subheader';
 
+
 import './loginForm.css' 
 
 class LoginForm extends Component {
 	constructor() {
 		super();
-		this.state = {open: false};
+		this.state = {error: false};
 	}
 	onSubmit = () => {
 		let data = {
@@ -20,14 +21,19 @@ class LoginForm extends Component {
 		this.props.onSubmit(data);
 	}
 	renderMessage = () => {
-		if (this.props.status != null) 
+		if (this.state.error) 
 		{
 			return <div>
 				{this.props.post.message}
 			</div>
 		}
 
-		return null;
+		return <div style={{visibility:'hidden'}}>N/A</div>;
+	}
+	resetState = () => {
+		this.setState({
+			error: false
+		});
 	}
 	render() {
 		const subheaderStyle = {
@@ -36,6 +42,7 @@ class LoginForm extends Component {
 		const inputStyle = {
 			paddingLeft: '5px'
 		}
+		const formClass = this.state.error ? "shake" : "";
 
 		return <div className="form">
 			<div className="login">
@@ -46,26 +53,36 @@ class LoginForm extends Component {
 				backgroundColor="#3b5998"
 				labelColor="white"
 				/> 
+     			<Subheader style={subheaderStyle}>or</Subheader>		
 			</div>			
-			<div className="login">
-     			<Subheader style={subheaderStyle}>or</Subheader>			
+			<div className={"login " + formClass}
+				style={{
+					padding:'5px'
+				}}
+			>	
 				<FontIcon className="fa fa-user" />
-				<TextField style={inputStyle} hintText="Username" ref="username"/>
+				<TextField onChange={this.resetState} style={inputStyle} hintText="Username" ref="username"/>
 				<br />
 				<FontIcon className="fa fa-key" />
-				<TextField style={inputStyle} hintText="Password" ref="password"/>
+				<TextField onChange={this.resetState} style={inputStyle} hintText="Password" ref="password"/>
 				<br />
 				<RaisedButton onClick={this.onSubmit} label="Log in" primary={true} fullWidth={true}/>
+				{this.renderMessage()}					
+			</div>
 
 				<div className="auth">
 					<p/>
 					<RaisedButton label="Forgot password?"/>		
-					<RaisedButton label="Register" secondary={true}/>
-				</div>				
-			</div>
-
-			{this.renderMessage()}			
+					<RaisedButton label="Sign up" secondary={true}/>
+				</div>		
 		</div>
+	}
+	componentWillReceiveProps(nextProps){
+		if (nextProps.post) {
+			this.setState({
+				error: nextProps.post.success === false
+			})
+		}
 	}
 }
 

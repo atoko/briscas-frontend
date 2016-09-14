@@ -28,7 +28,7 @@ class App extends Component {
               backgroundColor: '#212121'
             }}
             titleStyle={{
-              color: '#03A9F4'              
+              color: '#D32F2F'              
             }}
             showMenuIconButton={false}
           />   
