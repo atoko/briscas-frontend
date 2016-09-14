@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-class Fetch extends Component {
+class Get extends Component {
 	constructor() {
 		super();
 		this.state = {data: []};
 	}	
 	render() {
-		return <div>
-			{React.cloneElement(this.props.children, {
+		return React.cloneElement(this.props.children, {
 				data: this.state.data
-			})}
-		</div>
+		});
 	}
 
 	componentDidMount() {
-		fetch(`http://localhost:51966/${this.props.url}`)
+		fetch(`http://localhost:3000/${this.props.url}`)
 		.then((response) => {
 			return response.json();
 		})
@@ -26,4 +24,4 @@ class Fetch extends Component {
 	}	
 }
 
-export default Fetch;
+export default Get;
