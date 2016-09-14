@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import myTheme from './App/theme';
 import AppBar from 'material-ui/AppBar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
+
 class App extends Component {
   constructor() {
     super();
@@ -18,9 +18,9 @@ class App extends Component {
     });
   }
   render() {
-    console.log(this.state.login);
+    const theme = getMuiTheme(myTheme);
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={theme}>
         <div>
           <AppBar
             title="BriscaAU"
@@ -43,7 +43,7 @@ class App extends Component {
               marginTop: '12px'
             }
           }>
-            Atoko 2016 
+            Pedro 2016 
           </div>
         </div>
       </MuiThemeProvider>

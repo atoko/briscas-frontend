@@ -41,9 +41,10 @@ class LoginForm extends Component {
 			<div className="login">
 				<br/>
 				<RaisedButton
-				primary={true} 
 				label="Log in with Facebook"
 				icon={<FontIcon className="fa fa-facebook" />}
+				backgroundColor="#3b5998"
+				labelColor="white"
 				/> 
 			</div>			
 			<div className="login">
