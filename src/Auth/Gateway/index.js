@@ -3,15 +3,24 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import Paper from 'material-ui/Paper';
 
 import Post from './containers/post';
-import Login from './components/loginForm';
+import LoginForm from './components/loginForm';
+import GuestForm from './components/guestForm';
 
 class Gateway extends Component {
 	constructor(props) {
 		super();
+		this.state = {tab:'guest'};
+	}
+	changeTab = (tab) => {
+		if (typeof tab === "string") {
+			this.setState({
+				tab
+			});
+		}
 	}
 	render() {
 		return (<Paper style={{
-				maxWidth: '800px',
+				maxWidth: '400px',
 				height: '400px',
 				margin: 'auto',
 				marginTop: '8px',
@@ -19,17 +28,18 @@ class Gateway extends Component {
 			}} 
 			 zDepth={2}
 			>
-			<Tabs>
-				<Tab label="Login" >
-					<Post><Login /></Post>
+			<Tabs
+				value={this.state.tab}
+				onChange={this.changeTab}>
+				<Tab label="Guest" value="guest">
+					<Post url="auth/anonymous">
+						<GuestForm onDismiss={() =>{ this.changeTab("login");}}/>
+					</Post>				
 				</Tab>
-				<Tab label="Register" >
-					<div>
-					<h2>Tab Two</h2>
-					<p>
-						This is another example tab.
-					</p>
-					</div>
+				<Tab label="Login" value="login">
+					<Post url="auth/login">
+						<LoginForm />
+					</Post>					
 				</Tab>
 			</Tabs>
 		</Paper>);

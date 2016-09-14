@@ -12,12 +12,12 @@ class Post extends Component {
 	}	
 	render() {
 		return React.cloneElement(this.props.children, {
-				onSubmit: this.submit.bind(this),
+				onSubmit: this.submit,
 				post: this.state.json,
 				status: this.state.status
 		});
 	}
-	submit(data) {
+	submit = (data) => {
 		this.setState({
 			data
 		});
@@ -26,7 +26,7 @@ class Post extends Component {
 		if (this.state.data) {
 			let response = null;
 
-			fetch(`http://localhost:3000/auth/login`, {
+			fetch(`http://localhost:3000/${this.props.url}`, {
 				headers: {
 				'Origin': 'brisca',
 				'Accept': 'application/json',
@@ -42,7 +42,7 @@ class Post extends Component {
 				return response.json();
 			})
 			.catch((err) => {
-				throw new Error("/auth/login 404");
+				throw new Error(`${this.props.url} 404`);
 			})
 			.then((json) => {
 				this.setState({
