@@ -28,9 +28,9 @@ class Post extends Component {
 
 			fetch(`http://localhost:3000/${this.props.url}`, {
 				headers: {
-				'Origin': 'brisca',
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+					'Origin': 'brisca',
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
 				},		
 				credentials: 'include',		
 				method: 'POST',

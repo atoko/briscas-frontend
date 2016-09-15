@@ -1,3 +1,3 @@
 import Gateway from "./Gateway";
-
-export default { Gateway };
+import Member from "./Member";
+export default { Gateway, Member };

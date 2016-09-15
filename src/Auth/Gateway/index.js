@@ -10,6 +10,7 @@ class Gateway extends Component {
 	constructor(props) {
 		super();
 		this.state = {tab:'guest'};
+		//doLogout(); this.props.location.query.hasProperty("logout")
 	}
 	changeTab = (tab) => {
 		if (typeof tab === "string") {
@@ -20,13 +21,11 @@ class Gateway extends Component {
 	}
 	render() {
 		return (<Paper style={{
-				maxWidth: '400px',
 				height: '400px',
 				margin: 'auto',
-				marginTop: '8px',
 				backgroundColor:'#FAFAFA'
 			}} 
-			 zDepth={2}
+			 zDepth={1}
 			>
 			<Tabs
 				value={this.state.tab}

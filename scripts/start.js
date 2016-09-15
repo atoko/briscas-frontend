@@ -201,7 +201,6 @@ function addMiddleware(devServer) {
       console.log(chalk.red('Either remove "proxy" from package.json, or make it a string.'));
       process.exit(1);
     }
-
     // Otherwise, if proxy is specified, we will let it handle any request.
     // There are a few exceptions which we won't send to the proxy:
     // - /index.html (served as HTML5 history API fallback)

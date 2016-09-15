@@ -14,7 +14,8 @@ import './index.css';
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route component={App}>
-      <Route path="/auth" component={Auth.Gateway}/>
+      <Route path="/gateway" component={Auth.Gateway}/>
+      <Route path="/profile" component={Auth.Member}/>      
     </Route>
   </Router>,
   document.getElementById('root')

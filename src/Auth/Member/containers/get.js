@@ -11,7 +11,14 @@ class Get extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`http://localhost:3000/${this.props.url}`)
+		fetch(`http://localhost:3000/${this.props.url}`, {
+				headers: {
+					'Accept': 'application/json',
+				},		
+				credentials: 'include',		
+				method: 'GET',
+				cache: 'default'
+		})
 		.then((response) => {
 			return response.json();
 		})
