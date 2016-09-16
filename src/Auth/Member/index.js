@@ -10,6 +10,9 @@ class Member extends Component {
 		<Paper
 			zDepth={1}
 		>
+				<h2 style={{
+					marginTop: 0
+				}}> %Hello, {}% </h2>
 			<div className="paper">
 				<div className="grid">
 					<div className="grid-item">

@@ -21,22 +21,22 @@ class GuestForm extends Component {
 		return <div className="form">
 			<div className="login">
 
-				<p>BriscasAU requires a user account.</p>
+				<p>%BriscasAU requires a user account.%</p>
 				<RaisedButton 
 					onClick={this.onSubmit} 
-					label="Continue as Guest"
+					label="%Continue as Guest%"
 					style={{
 						height: 80
 					}}					
 					fullWidth={true}  
 					secondary={true} 
 				/>	
-				<Subheader style={subheaderStyle}> or </Subheader>	
-				<RaisedButton onClick={this.onDismiss} label="Log in" fullWidth={true}  primary={true} />		
+				<Subheader style={subheaderStyle}> %or% </Subheader>	
+				<RaisedButton onClick={this.onDismiss} label="%Log in%" fullWidth={true}  primary={true} />		
 				
 				<div>
-					<Subheader style={subheaderStyle}> Don't have an account? </Subheader>	
-					<RaisedButton onClick={this.onDismiss} label="Sign up" fullWidth={true}/>				
+					<Subheader style={subheaderStyle}> %Don't have an account?% </Subheader>	
+					<RaisedButton onClick={this.onDismiss} label="%Sign up%" fullWidth={true}/>				
 				</div>
 			</div>
 		</div>

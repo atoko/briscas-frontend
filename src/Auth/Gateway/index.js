@@ -49,12 +49,12 @@ class Gateway extends Component {
 			<Tabs
 				value={this.state.tab}
 				onChange={this.changeTab}>
-				<Tab label="Guest" value="guest">
+				<Tab label="%Guest%" value="guest">
 					<Post url="auth/anonymous" on200={redirect}>
 						<GuestForm onDismiss={() =>{ this.changeTab("login");}}/>
 					</Post>				
 				</Tab>
-				<Tab label="Login" value="login">
+				<Tab label="%Login%" value="login">
 					<Post url="auth/login" on200={redirect}>
 						<LoginForm />
 					</Post>					

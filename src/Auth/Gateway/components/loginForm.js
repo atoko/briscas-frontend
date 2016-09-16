@@ -48,12 +48,12 @@ class LoginForm extends Component {
 			<div className="login">
 				<br/>
 				<RaisedButton
-				label="Log in with Facebook"
-				icon={<FontIcon className="fa fa-facebook" />}
-				backgroundColor="#3b5998"
-				labelColor="white"
+					label="Log in with Facebook"
+					icon={<FontIcon className="fa fa-facebook" />}
+					backgroundColor="#3b5998"
+					labelColor="white"
 				/> 
-     			<Subheader style={subheaderStyle}>or</Subheader>		
+     			<Subheader style={subheaderStyle}>%or%</Subheader>		
 			</div>			
 			<div className={"login " + formClass}
 				style={{
@@ -61,19 +61,19 @@ class LoginForm extends Component {
 				}}
 			>	
 				<FontIcon className="fa fa-user" />
-				<TextField onChange={this.resetState} style={inputStyle} hintText="Username" ref="username"/>
+				<TextField onChange={this.resetState} style={inputStyle} hintText="%Username%" ref="username"/>
 				<br />
 				<FontIcon className="fa fa-key" />
-				<TextField onChange={this.resetState} style={inputStyle} hintText="Password" ref="password"/>
+				<TextField onChange={this.resetState} style={inputStyle} hintText="%Password%" ref="password"/>
 				<br />
-				<RaisedButton onClick={this.onSubmit} label="Log in" primary={true} fullWidth={true}/>
+				<RaisedButton onClick={this.onSubmit} label="%Log in%" primary={true} fullWidth={true}/>
 				{this.renderMessage()}					
 			</div>
 
 				<div className="auth">
 					<p/>
-					<RaisedButton label="Forgot password?"/>		
-					<RaisedButton label="Sign up" secondary={true}/>
+					<RaisedButton label="%Forgot password?%"/>		
+					<RaisedButton label="%Sign up%" secondary={true}/>
 				</div>		
 		</div>
 	}

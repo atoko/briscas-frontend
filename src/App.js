@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import myTheme from './App/theme';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
+
+import AppBar from './App/appbar';
 
 class App extends Component {
   constructor() {
@@ -24,11 +24,7 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={theme}>
         <div>
-          <div className="app-menu">
-            <h2 className="app-header" >BriscaAU</h2>
-            <Link to="/profile"><h3 className="app-header-link">Profile</h3></Link>            
-            <Link to="/gateway?logout"><h3 className="app-header-link">Logout</h3></Link>
-          </div>
+          <AppBar/>
 
           {React.cloneElement(this.props.children, {
             setLoginState: this.setLoginState
