@@ -26,7 +26,7 @@ class GuestForm extends Component {
 					onClick={this.onSubmit} 
 					label="Continue as Guest"
 					style={{
-						height: '80'
+						height: 80
 					}}					
 					fullWidth={true}  
 					secondary={true} 

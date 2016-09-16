@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 class Post extends Component {
 	constructor() {
@@ -7,7 +8,8 @@ class Post extends Component {
 			data: null,
 			request: null,
 			status: null,
-			json: null
+			json: null,
+			redirect: null
 		};
 	}	
 	render() {
@@ -18,9 +20,17 @@ class Post extends Component {
 		});
 	}
 	submit = (data) => {
+		
 		this.setState({
-			data
+			data,
+			json: null,
+			status: null
 		});
+	}
+	componentWillUpdate(newProps, newState) {
+		if (newState.redirect) {
+			browserHistory.push(newState.redirect);			
+		}		
 	}
 	componentDidUpdate() {
 		if (this.state.data) {
@@ -28,7 +38,6 @@ class Post extends Component {
 
 			fetch(`http://localhost:3000/${this.props.url}`, {
 				headers: {
-					'Origin': 'brisca',
 					'Accept': 'application/json',
 					'Content-Type': 'application/json'
 				},		
@@ -38,6 +47,7 @@ class Post extends Component {
 				cache: 'default'
 			})
 			.then((res) => {
+				
 				response = res;
 				return response.json();
 			})
@@ -45,13 +55,20 @@ class Post extends Component {
 				throw new Error(`${this.props.url} 404`);
 			})
 			.then((json) => {
+				let redirect = null;
+				if (response.status === 200) {
+					if (this.props.on200 && (typeof this.props.on200) === "string") {
+						redirect = this.props.on200;
+					}
+				}	
 				this.setState({
 					data: null,
 					request: this.state.data,					
 					status: response.status,
-					json
+					json,
+					redirect
 				});				
-			})
+			});	
 		}
 	}
 }

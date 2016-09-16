@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 class Get extends Component {
 	constructor() {
 		super();
@@ -20,13 +21,21 @@ class Get extends Component {
 				cache: 'default'
 		})
 		.then((response) => {
+			if (response.status === 401) {
+				if (this.props.on401 && (typeof this.props.on401) === "string") {
+					browserHistory.push(this.props.on401);
+				}
+				return null;
+			}
 			return response.json();
 		})
 		.then((data) => {
-			this.setState({
-				...this.state,
-				data
-			})
+			if (data) {
+				this.setState({
+					...this.state,
+					data
+				})
+			}
 		});
 	}	
 }

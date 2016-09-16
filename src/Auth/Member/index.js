@@ -13,7 +13,7 @@ class Member extends Component {
 			<div className="paper">
 				<div className="grid">
 					<div className="grid-item">
-						<Get url={'auth'}><View /></Get>
+						<Get on401="/gateway?redirect=profile" url={'auth'}><View /></Get>
 					</div>
 					<div className="grid-item">
 						<div className="medium">
