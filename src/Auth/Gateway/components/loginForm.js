@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
 import Subheader from 'material-ui/Subheader';
 
+import FacebookLogin from '../../../App/libs/react-facebook-login';
 import LinearProgress from 'material-ui/LinearProgress';
 
 import './loginForm.css' 
@@ -12,7 +12,10 @@ import './loginForm.css'
 class LoginForm extends Component {
 	constructor() {
 		super();
-		this.state = {error: false};
+		this.state = {
+			error: false,
+			loading: false
+		};
 	}
 	onSubmit = () => {
 		let data = {
@@ -22,7 +25,7 @@ class LoginForm extends Component {
 		this.props.onSubmit(data);
 	}
 	renderMessage = () => {
-		if (this.state.error) 
+		if (this.state.error && this.props.post) 
 		{
 			return <div>
 				{this.props.post.message}
@@ -36,6 +39,28 @@ class LoginForm extends Component {
 			error: false
 		});
 	}
+	prepareLogin = () => {
+		this.setState({
+			loading: true
+		});
+	}
+	facebookLogin = (response) => {
+		if (this.state.loading) {
+			this.onSubmitFacebook(response);
+		}
+		this.setState({
+			loading: false
+		});
+	}
+	onSubmitFacebook = (response) => {
+		let data = {
+			username: response.email,
+			password: response.accessToken,
+			provider: "facebook"
+		};
+		console.log(data);
+		this.props.onSubmit(data);
+	}
 	render() {
 		const subheaderStyle = {
 			paddingLeft: '0px'
@@ -48,11 +73,14 @@ class LoginForm extends Component {
 		return <div className="form">
 			<div className="login">
 				<br/>
-				<RaisedButton
-					label="Log in with Facebook"
-					icon={<FontIcon className="fa fa-facebook" />}
-					backgroundColor="#3b5998"
-					labelColor="white"
+				<FacebookLogin
+					appId={"1201115049955824"}	
+				    fields="name,email"
+					autoLoad={true}
+					icon={<FontIcon className="fa fa-facebook" />}				
+					onClick={this.prepareLogin}	
+					callback={this.facebookLogin}
+					size="small"
 				/> 
      			<Subheader style={subheaderStyle}>%or%</Subheader>		
 			</div>			
@@ -84,6 +112,10 @@ class LoginForm extends Component {
 			this.setState({
 				error: nextProps.post.success === false
 			})
+		} else {
+			this.setState({
+				error: false
+			})			
 		}
 	}
 }

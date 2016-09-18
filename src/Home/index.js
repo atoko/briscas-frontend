@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Paper from 'material-ui/Paper';
-
 
 class Home extends Component {
 	constructor(props) {

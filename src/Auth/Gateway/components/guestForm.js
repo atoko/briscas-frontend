@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
 import LinearProgress from 'material-ui/LinearProgress';
+
 class GuestForm extends Component {
 	onSubmit = () => {
 		if (this.props.onSubmit) {

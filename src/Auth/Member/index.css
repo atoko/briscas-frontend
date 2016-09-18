@@ -1,3 +1,4 @@
+/*
 @media only screen and (min-width: 1240px) {
 	.grid {
 		display: flex;
@@ -13,8 +14,9 @@
 	.grid-item+.grid-item {
 		margin-left: 15px;
 	}	
-}
-@media only screen and (max-width: 1239px) and (min-width: 800px) {
+}*/
+/*@media only screen and (max-width: 1239px) and (min-width: 800px) {*/
+@media only screen and (min-width: 800px) {
 	.grid {
 		align-items: flex-start;
 		display: flex;

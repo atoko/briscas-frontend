@@ -17,7 +17,7 @@ class Gateway extends Component {
 
 	}
 	doLogout = () => {
-		fetch(`http://localhost:3000/auth/logout`, {
+		fetch(`/auth/logout`, {
 				headers: {
 					'Accept': 'application/json',
 				},		
@@ -31,7 +31,7 @@ class Gateway extends Component {
 		}
 		browserHistory.push("/");
 	}
-	componentWillMount() {
+	componentDidMount() {
 		if (this.props.location.query.hasOwnProperty("logout")) {
 			this.doLogout();
 		}

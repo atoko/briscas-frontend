@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class View extends Component {
 	getProp = (prop) => {

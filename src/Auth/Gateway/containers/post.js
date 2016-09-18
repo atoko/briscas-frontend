@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
+const initialState = {
+	data: null,
+	request: null,
+	status: null,
+	json: null,
+	redirect: null
+};
+
 class Post extends Component {
 	constructor() {
 		super();
-		this.state = {
-			data: null,
-			request: null,
-			status: null,
-			json: null,
-			redirect: null
-		};
+		this.state = initialState;
 	}	
 	render() {
 		return React.cloneElement(this.props.children, {
@@ -37,7 +39,7 @@ class Post extends Component {
 		if (this.state.data) {
 			let response = null;
 
-			fetch(`http://localhost:3000/${this.props.url}`, {
+			fetch(`/${this.props.url}`, {
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json'
@@ -53,7 +55,8 @@ class Post extends Component {
 				return response.json();
 			})
 			.catch((err) => {
-				throw new Error(`${this.props.url} 404`);
+				this.setState(initialState);						
+				throw new Error(`${this.props.url} ${response.status}`);						
 			})
 			.then((json) => {
 				let redirect = null;
@@ -65,6 +68,8 @@ class Post extends Component {
 								break;
 							case "function":
 								redirect = this.props.on200(json);
+								break;
+							default:
 								break;
 						}
 					}

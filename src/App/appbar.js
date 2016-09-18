@@ -5,10 +5,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 class AppBar extends Component {
   renderButtons = () => {
     const linkStyle = {
-      height: '65',
+      height: 65,
       borderRight: '1px black solid'
     }
-console.log(this.props);
     if (this.props.session.login === null) {
       return [
         <Link key="home" to="/"><RaisedButton style={linkStyle} label="%Lobby%" primary={true}/></Link>,

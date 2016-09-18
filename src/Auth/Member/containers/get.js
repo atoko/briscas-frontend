@@ -12,7 +12,7 @@ class Get extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`http://localhost:3000/${this.props.url}`, {
+		fetch(`/${this.props.url}`, {
 				headers: {
 					'Accept': 'application/json',
 				},		
