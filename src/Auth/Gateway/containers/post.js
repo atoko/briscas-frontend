@@ -15,6 +15,7 @@ class Post extends Component {
 	render() {
 		return React.cloneElement(this.props.children, {
 				onSubmit: this.submit,
+				request: this.state.data,
 				post: this.state.json,
 				status: this.state.status
 		});
@@ -57,8 +58,15 @@ class Post extends Component {
 			.then((json) => {
 				let redirect = null;
 				if (response.status === 200) {
-					if (this.props.on200 && (typeof this.props.on200) === "string") {
-						redirect = this.props.on200;
+					if (this.props.on200) {
+						switch (typeof this.props.on200) {
+							case "string":
+								redirect = this.props.on200;
+								break;
+							case "function":
+								redirect = this.props.on200(json);
+								break;
+						}
 					}
 				}	
 				this.setState({

@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
 import Subheader from 'material-ui/Subheader';
 
+import LinearProgress from 'material-ui/LinearProgress';
 
 import './loginForm.css' 
 
@@ -67,6 +68,7 @@ class LoginForm extends Component {
 				<TextField onChange={this.resetState} style={inputStyle} hintText="%Password%" ref="password"/>
 				<br />
 				<RaisedButton onClick={this.onSubmit} label="%Log in%" primary={true} fullWidth={true}/>
+				{this.props.request == null ? "" : <LinearProgress mode="indeterminate" />}
 				{this.renderMessage()}					
 			</div>
 

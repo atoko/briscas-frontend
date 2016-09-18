@@ -3,6 +3,9 @@ import { browserHistory } from 'react-router'
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Paper from 'material-ui/Paper';
 
+import { connect } from 'react-redux';
+import * as session from '../../App/store/ducks/session';
+
 import Post from './containers/post';
 import LoginForm from './components/loginForm';
 import GuestForm from './components/guestForm';
@@ -23,6 +26,9 @@ class Gateway extends Component {
 				cache: 'default'
 		});
 		
+		if (this.props.onLogout) {
+			this.props.onLogout();
+		}
 		browserHistory.push("/");
 	}
 	componentWillMount() {
@@ -37,8 +43,17 @@ class Gateway extends Component {
 			});
 		}
 	}
-	render() {
+	login = (data) => {
 		const redirect = this.props.location.query.hasOwnProperty("redirect") ? this.props.location.query["redirect"] : "/";
+		if (this.props.onLogin) {
+			const login = {
+				id: data.return_id
+			}
+			this.props.onLogin(login);
+		}
+		return redirect;
+	}
+	render() {
 		return (<Paper style={{
 				height: '400px',
 				margin: 'auto',
@@ -50,12 +65,12 @@ class Gateway extends Component {
 				value={this.state.tab}
 				onChange={this.changeTab}>
 				<Tab label="%Guest%" value="guest">
-					<Post url="auth/anonymous" on200={redirect}>
+					<Post url="auth/anonymous" on200={this.login}>
 						<GuestForm onDismiss={() =>{ this.changeTab("login");}}/>
 					</Post>				
 				</Tab>
 				<Tab label="%Login%" value="login">
-					<Post url="auth/login" on200={redirect}>
+					<Post url="auth/login" on200={this.login}>
 						<LoginForm />
 					</Post>					
 				</Tab>
@@ -64,4 +79,16 @@ class Gateway extends Component {
 	}
 }
 
-export default Gateway
+//
+let mapStateToProps = null;
+let mapDispatchToProps = (dispatch) => {
+	return {
+		onLogin: (data) => {
+			dispatch(session.login(data))
+		},
+		onLogout: () => {
+			dispatch(session.logout())
+		}
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Gateway)
