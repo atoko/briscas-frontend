@@ -7,7 +7,6 @@ class Home extends Component {
 	render() {
 		return (<div>
 			<h1>Hi! This page should compose some other views</h1>
-			<h2> You are {false ? "" : "not"} logged in </h2>
 		</div>);
 	}
 }

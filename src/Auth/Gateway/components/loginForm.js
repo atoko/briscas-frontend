@@ -45,6 +45,7 @@ class LoginForm extends Component {
 		});
 	}
 	facebookLogin = (response) => {
+		console.log(response);
 		if (this.state.loading) {
 			this.onSubmitFacebook(response);
 		}
@@ -58,7 +59,6 @@ class LoginForm extends Component {
 			password: response.accessToken,
 			provider: "facebook"
 		};
-		console.log(data);
 		this.props.onSubmit(data);
 	}
 	render() {
@@ -76,7 +76,7 @@ class LoginForm extends Component {
 				<FacebookLogin
 					appId={"1201115049955824"}	
 				    fields="name,email"
-					autoLoad={true}
+					autoLoad={false}
 					icon={<FontIcon className="fa fa-facebook" />}				
 					onClick={this.prepareLogin}	
 					callback={this.facebookLogin}
