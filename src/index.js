@@ -9,6 +9,7 @@ import reducers from './App/store';
 import App from './App';
 import Auth from "./Auth";
 import Home from "./Home";
+import Brisca from "./Brisca";
 
 import './index.css';
 
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Route path="/" component={Home}/>
         <Route path="/gateway" component={Auth.Gateway}/>
         <Route path="/profile" component={Auth.Member}/>
+        <Route path="/brisca/:gameId" component={Brisca.Board}/>
       </Route>
     </Router>
   </Provider>,

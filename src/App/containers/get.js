@@ -3,8 +3,8 @@ import { browserHistory } from 'react-router';
 class Get extends Component {
 	constructor() {
 		super();
-		this.state = {data: []};
-	}	
+		this.state = {data: null};
+	}
 	render() {
 		return React.cloneElement(this.props.children, {
 				data: this.state.data

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import FacebookLogin from './libs/react-facebook-login';
-import Post from '../Auth/Gateway/containers/post';
+import Post from './containers/post';
 
 class Facebook extends Component {
 	login = (data) => {

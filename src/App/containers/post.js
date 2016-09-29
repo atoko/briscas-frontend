@@ -23,7 +23,6 @@ class Post extends Component {
 		});
 	}
 	submit = (data) => {
-		
 		this.setState({
 			data,
 			json: null,

@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 import * as session from '../../App/store/ducks/session';
 
-import Post from './containers/post';
+import Post from '../../App/containers/post';
 import LoginForm from './components/loginForm';
 import GuestForm from './components/guestForm';
 

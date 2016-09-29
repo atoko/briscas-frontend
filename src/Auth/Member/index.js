@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import View from './components/view';
-import Get from './containers/get';
+import Get from '../../App/containers/get';
 import './index.css';
 
 class Member extends Component {

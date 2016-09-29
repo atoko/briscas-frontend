@@ -3,13 +3,13 @@ const LOGIN = 'auth/gateway/LOGIN';
 const LOGOUT = 'auth/gateway/LOGOUT';
 
 const initialState = {
-  login: localStorage.getItem("brisca-session")
+  login: JSON.parse(localStorage.getItem("brisca-session"))
 };
 // Reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOGIN:
-      localStorage.setItem("brisca-session", action.data);
+      localStorage.setItem("brisca-session", JSON.stringify(action.data));
       return {
         ...state,        
         login: action.data,
