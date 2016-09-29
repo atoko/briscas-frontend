@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 
 class Card extends Component {
+	onSubmit(event) {
+		this.props.onSubmit();
+	}
     render() {
-        return <li><a src="/go" onClick={this.props.onSubmit}>{this.props.id}</a></li>
+        return <li><a src="/go" onClick={this.onSubmit}>{this.props.id}</a></li>
     }
 }
 
