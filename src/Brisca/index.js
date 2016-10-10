@@ -1,2 +1,3 @@
 import Board from "./Board";
-export default { Board };
+import Catalog from "./Catalog";
+export default { Board, Catalog };

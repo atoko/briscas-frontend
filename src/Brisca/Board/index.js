@@ -13,7 +13,6 @@ class GameBoard extends Component {
 		};	
 	}
 	render() {
-		console.log(this.props);
 		return <Sock subscribe={this.gameSubscription}><Board /></Sock>;
 	}
 }

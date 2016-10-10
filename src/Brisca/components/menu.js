@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import List from "./list";
+import Get from "../../App/containers/get";
 class Menu extends Component {
 	render() {
 		return <div>
@@ -7,8 +9,7 @@ class Menu extends Component {
 				<button label="Join">Join</button>
 			</div>
 			<div>
-				Create Game
-
+				<Get url="briscas/active"><List/></Get>
 			</div>
 		</div>;
 	}

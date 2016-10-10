@@ -13,10 +13,6 @@ import Brisca from "./Brisca";
 
 import './index.css';
 
-/*
-      <Route path="/:id/profile" component={Competitions.list}/>
-      <Route path="/verify" component={Competitions.list}/>
-*/
 let store = createStore(reducers);
 ReactDOM.render(
   <Provider store={store}>
@@ -26,6 +22,7 @@ ReactDOM.render(
         <Route path="/gateway" component={Auth.Gateway}/>
         <Route path="/profile" component={Auth.Member}/>
         <Route path="/brisca/:gameId" component={Brisca.Board}/>
+        <Route path="/catalog" component={Brisca.Catalog}/>
       </Route>
     </Router>
   </Provider>,

@@ -9,7 +9,7 @@ class Home extends Component {
 	render() {
 		return (<div>
 			<h1>Hi! This page should compose some other views</h1>
-			<Post url="game/" on200={(game)=>{ return `brisca/${game.id}`}}><Menu/></Post>
+			<Post url="briscas/join" on200={(game)=>{ return `brisca/${game.id}`}}><Menu/></Post>
 		</div>);
 	}
 }
